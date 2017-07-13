@@ -10,6 +10,3 @@ You are making very big jumps you have a chance to break the architecture of the
 Avec mon addon vous allez pouvoir géré votre voiture de façon réaliste.<br/>
 Vous foncez plusieurs fois dans un mure et le moteur ce trouve à l'avant oui vous avez forte chance de le casser à ce moment la capot s'ouvre avec de la fumer.<br/>
 Ont vous fonce dedans plusieurs fois, vous faites des très grands sauts vous avez une chance de cassé l'architecture de la voiture etc...<br/>
-<b>[TODO]</b><br/>
-
-Added more parameters like tank, submersion level... In reflection.

@@ -3,6 +3,7 @@ using CitizenFX.Core.Native;
 using CitizenFX.Core.UI;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,10 +51,10 @@ namespace VehicleHealth
             ShowmessageSubmerssion = bool.Parse(config.Get("showmmsgsubmerssion", "true"));
             ShowmessageBreakEngine = bool.Parse(config.Get("showmsgbreakengine", "true"));
 
-            DamageEngine = float.Parse(config.Get("damageengine", "80"));
-            DamageBody = float.Parse(config.Get("damagebody", "60"));
-            DamageTotalHealth = float.Parse(config.Get("damagetotalhealth", "55"));
-            DamageSubmission = float.Parse(config.Get("damagesubmission", "30"));
+            DamageEngine = float.Parse(config.Get("damageengine", "80"), CultureInfo.InvariantCulture);
+            DamageBody = float.Parse(config.Get("damagebody", "60"), CultureInfo.InvariantCulture);
+            DamageTotalHealth = float.Parse(config.Get("damagetotalhealth", "55"), CultureInfo.InvariantCulture);
+            DamageSubmission = float.Parse(config.Get("damagesubmission", "30"), CultureInfo.InvariantCulture);
             Debug.WriteLine("Advanced vehicle damage created by aabbfive - https://discord.gg/x4s4xwu");
             Tick += OnTick;
         }

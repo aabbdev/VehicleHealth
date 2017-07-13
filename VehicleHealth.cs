@@ -21,6 +21,11 @@ namespace VehicleHealth
         private bool ShowmessageSubmerssion;
         private bool ShowmessageBreakEngine;
 
+        private float DamageEngine;
+        private float DamageBody;
+        private float DamageTotalHealth;
+        private float DamageSubmission;
+
         private Config config;
         public VehicleHealth()
         {
@@ -44,6 +49,11 @@ namespace VehicleHealth
             ShowMessageCall = bool.Parse(config.Get("showmmsgcall", "true"));
             ShowmessageSubmerssion = bool.Parse(config.Get("showmmsgsubmerssion", "true"));
             ShowmessageBreakEngine = bool.Parse(config.Get("showmsgbreakengine", "true"));
+
+            DamageEngine = float.Parse(config.Get("damageengine", "80"));
+            DamageBody = float.Parse(config.Get("damagebody", "60"));
+            DamageTotalHealth = float.Parse(config.Get("damagetotalhealth", "55"));
+            DamageSubmission = float.Parse(config.Get("damagesubmission", "30"));
             Debug.WriteLine("Advanced vehicle damage created by aabbfive - https://discord.gg/x4s4xwu");
             Tick += OnTick;
         }
@@ -70,7 +80,7 @@ namespace VehicleHealth
                 Vehicle vehicle = playerPed.CurrentVehicle;
                 if(vehicle != null && vehicle.GetPedOnSeat(VehicleSeat.Driver) == playerPed && vehicle.IsAlive && playerPed.CurrentVehicle.Model.IsCar)
                 {
-                    if (GetVehEngineHealth(vehicle) < 80f)
+                    if (GetVehEngineHealth(vehicle) < DamageEngine)
                     {
                         if(ShowmessageBreakEngine)
                         {
@@ -85,7 +95,7 @@ namespace VehicleHealth
                         vehicle.IsEngineRunning = false;
                         Function.Call(Hash.SET_VEHICLE_DOOR_OPEN, vehicle, 4, false, false);
                     }
-                    else if (GetVehBodyHealth(vehicle) < 60f)
+                    else if (GetVehBodyHealth(vehicle) < DamageBody)
                     {
                         if(ShowMessageDamage)
                         {
@@ -97,7 +107,7 @@ namespace VehicleHealth
                         }
                         vehicle.IsDriveable = false;
                         vehicle.IsEngineRunning = false;
-                    }else if(GetVehHealth(vehicle) < 55f)
+                    }else if(GetVehHealth(vehicle) < DamageTotalHealth)
                     {
                         if(ShowMessageDamage)
                         {
@@ -109,7 +119,7 @@ namespace VehicleHealth
                         }
                         vehicle.IsDriveable = false;
                         vehicle.IsEngineRunning = false;
-                    }else if(GetVehSubmission(vehicle) > 30f)
+                    }else if(GetVehSubmission(vehicle) > DamageSubmission)
                     {
                         if(ShowmessageSubmerssion)
                         {

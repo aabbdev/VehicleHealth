@@ -4,7 +4,7 @@
 
 With my addon you will be able to manage your car realistically.<br/>
 You run several times in a wall and the engine finds it in the front yes you have a high chance of breaking it at this time the hood opens and smoking.<br/>
-You are making very big jumps you have a chance to break the architecture of the car etc ...<br/>
+You are making very big jumps you have a chance to break the architecture of the car etc ...<br/><br/>
 <b>[FR]</b><br/>
 
 Avec mon addon vous allez pouvoir géré votre voiture de façon réaliste.<br/>

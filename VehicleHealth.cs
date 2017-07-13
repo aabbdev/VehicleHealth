@@ -22,7 +22,7 @@ namespace VehicleHealth
             if (playerPed.IsInVehicle())
             {
                 Vehicle vehicle = playerPed.CurrentVehicle;
-                if(vehicle != null && vehicle.GetPedOnSeat(VehicleSeat.Driver) == playerPed && vehicle.IsAlive)
+                if(vehicle != null && vehicle.GetPedOnSeat(VehicleSeat.Driver) == playerPed && vehicle.IsAlive && playerPed.CurrentVehicle.Model.IsCar)
                 {
                     if (GetVehEngineHealth(vehicle) < 80f)
                     {

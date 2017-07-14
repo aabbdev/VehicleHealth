@@ -50,9 +50,10 @@ namespace VehicleHealth
             ShowmessageSubmerssion = bool.Parse(config.Get("showmmsgsubmerssion", "true"));
             ShowmessageBreakEngine = bool.Parse(config.Get("showmsgbreakengine", "true"));
 
-            DamageEngine = float.Parse(config.Get("damageengine", "80.0"));
-            DamageTotalHealth = float.Parse(config.Get("damagetotalhealth", "55.0"));
-            DamageSubmission = float.Parse(config.Get("damagesubmission", "30.0"));
+            DamageEngine = float.Parse(config.Get("damageengine", "80.0"), CultureInfo.InvariantCulture);
+            DamageTotalHealth = float.Parse(config.Get("damagetotalhealth", "55.0"), CultureInfo.InvariantCulture);
+            DamageSubmission = float.Parse(config.Get("damagesubmission", "30.0"), CultureInfo.InvariantCulture);
+
             Tick += OnTick;
         }
         public string Convert(string str)

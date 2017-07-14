@@ -23,7 +23,6 @@ namespace VehicleHealth
         private bool ShowmessageBreakEngine;
 
         private float DamageEngine;
-        private float DamageBody;
         private float DamageTotalHealth;
         private float DamageSubmission;
 
@@ -51,11 +50,9 @@ namespace VehicleHealth
             ShowmessageSubmerssion = bool.Parse(config.Get("showmmsgsubmerssion", "true"));
             ShowmessageBreakEngine = bool.Parse(config.Get("showmsgbreakengine", "true"));
 
-            DamageEngine = float.Parse(config.Get("damageengine", "80"), CultureInfo.InvariantCulture);
-            DamageBody = float.Parse(config.Get("damagebody", "60"), CultureInfo.InvariantCulture);
-            DamageTotalHealth = float.Parse(config.Get("damagetotalhealth", "55"), CultureInfo.InvariantCulture);
-            DamageSubmission = float.Parse(config.Get("damagesubmission", "30"), CultureInfo.InvariantCulture);
-            Debug.WriteLine("Advanced vehicle damage created by aabbfive - https://discord.gg/x4s4xwu");
+            DamageEngine = float.Parse(config.Get("damageengine", "80.0"));
+            DamageTotalHealth = float.Parse(config.Get("damagetotalhealth", "55.0"));
+            DamageSubmission = float.Parse(config.Get("damagesubmission", "30.0"));
             Tick += OnTick;
         }
         public string Convert(string str)
@@ -95,22 +92,24 @@ namespace VehicleHealth
                         vehicle.IsDriveable = false;
                         vehicle.IsEngineRunning = false;
                         Function.Call(Hash.SET_VEHICLE_DOOR_OPEN, vehicle, 4, false, false);
-                    }
-                    else if (GetVehBodyHealth(vehicle) < DamageBody)
-                    {
-                        if(ShowMessageDamage)
-                        {
-                            Screen.ShowNotification(messageDamage);
-                        }
-                        if(ShowMessageCall)
-                        {
-                            Screen.ShowNotification(messageCall);
-                        }
-                        vehicle.IsDriveable = false;
-                        vehicle.IsEngineRunning = false;
+                    //}
+                    //else if (GetVehBodyHealth(vehicle) < DamageBody)
+                    //{
+                    //    Debug.WriteLine(GetVehBodyHealth(vehicle).ToString());
+                    //    if(ShowMessageDamage)
+                    //    {
+                    //        Screen.ShowNotification(messageDamage);
+                    //   }
+                    //    if(ShowMessageCall)
+                    //    {
+                    //        Screen.ShowNotification(messageCall);
+                    //    }
+                    //    vehicle.IsDriveable = false;
+                    //    vehicle.IsEngineRunning = false;
                     }else if(GetVehHealth(vehicle) < DamageTotalHealth)
                     {
-                        if(ShowMessageDamage)
+                        Debug.WriteLine(GetVehBodyHealth(vehicle).ToString());
+                        if (ShowMessageDamage)
                         {
                             Screen.ShowNotification(messageDamage);
                         }
